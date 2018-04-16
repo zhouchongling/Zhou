@@ -12,10 +12,11 @@ var shadow1 = new createjs.Bitmap("images/5.1.jpg"),
     shadow3 = new createjs.Bitmap("images/5.6.png"),
     shadow4 = new createjs.Bitmap("images/5.5.png"),
     shadow5 = new createjs.Bitmap("images/5.4.png"),
-    shadow6 = new createjs.Bitmap("images/5.3.png");
+    shadow6 = new createjs.Bitmap("images/5.3.png"),
+    shadow7 = new createjs.Bitmap("images/0.3.jpg");
     icon = new createjs.Bitmap("images/5.7.png");
 
-stage.addChild(shadow1,shadow2,shadow3,shadow4,shadow5,shadow6,icon);
+stage.addChild(shadow1,shadow2,shadow3,shadow4,shadow5,shadow6,shadow7,icon);
 
 shadow2.x = 150;
 shadow2.y = 1050;
@@ -23,6 +24,7 @@ shadow2.regX = 110;
 shadow2.regY = 100;
 
 icon.alpha = 0;
+shadow7.alpha = 0;
 
 icon.mouseEnabled = false;
 
@@ -45,6 +47,7 @@ function handleTick(event) {
 shadow2.addEventListener("click",function(e){
     switch (id) {
         case 0:
+            music3.play();
             shadow6.alpha = 0;
             id++;
             break;
@@ -63,8 +66,8 @@ shadow2.addEventListener("click",function(e){
             break;
     }
 })
-//
-// icon.addEventListener("click",function(e){
-//     createjs.Tween.get(shadow4).to({alpha:1},500);
-//     window.setTimeout("window.location.href='index5.html'",500);
-// })
+
+icon.addEventListener("click",function(e){
+    icon.alpha = 0;
+    createjs.Tween.get(shadow7).to({alpha: 1}, 700);
+})
